@@ -65,9 +65,11 @@ namespace Test_8_IFrame
             var browser = AqualityServices.Browser;
             var elementFactory = AqualityServices.Get<IElementFactory>();
             var textFieldFrame = elementFactory.GetTextBox(By.XPath(".//body[@id='tinymce']/p"), "Text field");
+            StepLogger.Info(8, $"Select all text inside the frame.");
             textFieldFrame.SendKeys(Keys.Control + "a");
-            browser.Driver.SwitchTo().DefaultContent();
+            browser.Driver.SwitchTo().DefaultContent();            
             var buttonBold = elementFactory.GetButton(By.XPath(".//div[@id='mceu_3']/button"),"Bold");
+            StepLogger.Info(9, $"Click the button \"Bold\".");
             buttonBold.Click();
             browser.Driver.SwitchTo().Frame("mce_0_ifr");            
             var strongTextFrame = AqualityServices.ConditionalWait.WaitFor<IWebElement>(driver=> 
