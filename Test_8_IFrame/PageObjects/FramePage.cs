@@ -7,20 +7,7 @@ namespace Test_8_IFrame.PageObjects
 {
     public class FramePage
     {
-        private Browser browser = AqualityServices.Browser;
-        private IElementFactory elementFactory = AqualityServices.Get<IElementFactory>();
         public EditorForm EditorForm = new EditorForm();
-        public ILabel PageHeder;
-
-        public void LoadPage(string url)
-        {           
-            browser.GoTo(url);
-            browser.WaitForPageToLoad();
-        }
-
-        public void FindPageHeader()
-        {
-            PageHeder = elementFactory.GetLabel(By.XPath(".//div[@class='example']/h3"), "Page heder", ElementState.Displayed);
-        }         
+        public ILabel PageHeder => AqualityServices.Get<IElementFactory>().GetLabel(By.XPath(".//div[@class='example']/h3"), "Page heder", ElementState.Displayed);        
     }
 }
